@@ -23,5 +23,7 @@ ADD config/* /opt/services/conf/
 
 ADD run.sh /tmp/run.sh
 
+EXPOSE 80
+
 # Default command to run on boot
 CMD ["/tmp/run.sh"]
