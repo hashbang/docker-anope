@@ -2,7 +2,7 @@ FROM debian:wheezy
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y build-essential cmake curl && \
+    apt-get install -y build-essential cmake curl libgnutls-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
