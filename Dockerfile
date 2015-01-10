@@ -8,6 +8,7 @@ RUN apt-get update && \
 
 RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1/anope-2.0.1-source.tar.gz | tar xz && \
     cd anope-2.0.1-source && \
+    mv modules/extra/m_ssl_gnutls.cpp modules/ && \
     mkdir build && \
     cd build && \
     cmake \
