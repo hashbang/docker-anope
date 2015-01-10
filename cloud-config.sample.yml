@@ -28,5 +28,5 @@ coreos:
         -v /home/core/anope/:/opt/services/conf \
         --rm \
         --name="irc-services" \
-        hashbangsh/unrealircd
+        hashbangsh/anope
       ExecStop=/usr/bin/docker stop irc-services
