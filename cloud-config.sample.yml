@@ -25,7 +25,8 @@ coreos:
       [Service]
       Restart=always
       ExecStart=/usr/bin/docker run \
-        -v /home/core/anope/:/opt/services/conf \
+        -v /home/core/anope/config:/opt/services/conf \
+        -v /home/core/anope/data:/opt/services/data \
         --rm \
         --name="irc-services" \
         hashbangsh/anope
