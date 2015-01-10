@@ -23,4 +23,4 @@ RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1
 EXPOSE 80
 
 # Default command to run on boot
-CMD ["/opt/services/bin/services"]
+CMD ["/opt/services/bin/services","--nofork"]
