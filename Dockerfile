@@ -19,11 +19,7 @@ RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1
     make && \
     make install
 
-ADD config/* /opt/services/conf/
-
-ADD run.sh /tmp/run.sh
-
 EXPOSE 80
 
 # Default command to run on boot
-CMD ["/tmp/run.sh"]
+CMD ["/opt/services/bin/services"]

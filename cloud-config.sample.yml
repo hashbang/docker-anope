@@ -1,0 +1,32 @@
+#cloud-config
+
+---
+hostname: services
+coreos:
+  etcd:
+    discovery: https://discovery.etcd.io/74dc9ee6baba72a34504cb78db219f13
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  fleet:
+    public-ip: $private_ipv4
+  units:
+  - name: etcd.service
+    command: start
+  - name: fleet.service
+    command: start
+  - name: docker-anope.service
+    command: start
+    content: |
+      [Unit]
+      Description=Somehost IRC Services
+      Author=Somehost Team
+      After=docker.service
+
+      [Service]
+      Restart=always
+      ExecStart=/usr/bin/docker run \
+        -v /home/core/anope/:/opt/services/conf \
+        --rm \
+        --name="irc-services" \
+        hashbangsh/unrealircd
+      ExecStop=/usr/bin/docker stop irc-services
