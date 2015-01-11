@@ -2,7 +2,7 @@ FROM debian:wheezy
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y build-essential cmake curl libgnutls-dev && \
+    apt-get install -y build-essential cmake curl libgnutls-dev sudo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -20,12 +20,11 @@ RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1
     make && \
     make install
 
-RUN useradd anope
-RUN chown -R anope: /opt/services
+ADD run.sh /tmp/run.sh
 
-USER anope
+RUN useradd anope
 
 EXPOSE 80
 
 # Default command to run on boot
-CMD ["/opt/services/bin/services","--nofork"]
+CMD ["/tmp/run.sh"]
