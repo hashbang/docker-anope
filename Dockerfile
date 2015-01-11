@@ -21,6 +21,9 @@ RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1
     make install
 
 RUN useradd anope
+RUN chown -R anope: /opt/services
+
+USER anope
 
 EXPOSE 80
 
