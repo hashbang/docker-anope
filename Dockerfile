@@ -20,6 +20,8 @@ RUN curl http://iweb.dl.sourceforge.net/project/anope/anope-stable/Anope%202.0.1
     make && \
     make install
 
+RUN useradd anope
+
 EXPOSE 80
 
 # Default command to run on boot
